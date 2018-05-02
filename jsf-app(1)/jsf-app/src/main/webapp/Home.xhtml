@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Mail</title>
+
+        <h:outputStylesheet library="css" name="sistema.css"/>
+    </h:head>
+    <h:body>
+    	<h:form>
+	    	<h1>Formulário de Envio</h1>
+	    	
+	    	<p:toolbar style="margin-top: 20px">
+	    		<p:toolbarGroup align="left">
+	    			<p:button value="Itens Enviados" outcome="/ItensEnviados" />
+	    		</p:toolbarGroup>
+	    		<p:toolbarGroup align="right">
+	    			<p:commandButton value="Enviar Email" action="#{mailbean.salvarEnviar()}" />
+	    		</p:toolbarGroup>
+	    	</p:toolbar>
+	    	
+	    	<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px"
+	    			columnClasses="rotulo, campo">
+	    			
+	    		<p:outputLabel value="Seu email:" for="seuEmail" />
+	    		<p:inputText id="seuEmail"  value="#{mailbean.fromMail}" size="40" />
+	    		
+	    		<p:outputLabel value="Login do email:" for="loginEmail" />
+	    		<p:inputText id="loginEmail" value="#{mailbean.username}" size="40" />
+	    		
+	    		<p:outputLabel value="Senha do Email:" for="senhaEmail" />
+	    		<p:password id="senhaEmail" value="#{mailbean.password}" size="40" />
+	    		
+	    		<p:outputLabel value="Destinatario" for="destinatario"/>
+	    		<p:inputText id="destinatario" value="#{mailbean.toMail}"  size="60" />
+
+	    		<p:outputLabel value="Assunto" for="assunto"/>
+	    		<p:inputText id="assunto"  value="#{mailbean.subject}" size="60" />
+	    		
+	    		<p:outputLabel value="Mensagem" for="mensagem"/>
+	    		<p:inputTextarea id="mensagem"  value="#{mailbean.message}" rows="7" cols="33" style="height: 100px" />
+	    		
+	    	</p:panelGrid>
+	    	
+
+    	</h:form>
+    </h:body>
+</html>
